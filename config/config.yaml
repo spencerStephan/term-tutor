@@ -1,0 +1,4 @@
+database:
+  windows: "%LOCALAPPDATA%/TermTutor/database.sqlite"
+  mac: "~/Library/Application Support/TermTutor/database.sqlite"
+  linux: "~/.local/share/TermTutor/database.sqlite"
