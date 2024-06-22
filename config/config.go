@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-type Config struct {
+type RootConfig struct {
 	Database DatabasePaths
 }
 
@@ -16,9 +16,9 @@ type DatabasePaths struct {
 	Linux   string `mapstructure:"linux"`
 }
 
-var Cfg Config
+var RootCfg RootConfig
 
-func InitConfig(configPath string) {
+func InitRootConfig(configPath string) {
 	if configPath != "" {
 		viper.SetConfigFile(configPath)
 	} else {
@@ -32,8 +32,15 @@ func InitConfig(configPath string) {
 		log.Fatalf("Error reading in config file, %s", err)
 	}
 
-	if err := viper.Unmarshal(&Cfg); err != nil {
+	if err := viper.Unmarshal(&RootCfg); err != nil {
 		log.Fatalf("Error unmarshalling config file, %s", err)
 	}
+}
 
+func OverrideDatabasePaths(newPath string) {
+	if newPath != "" {
+		RootCfg.Database.Windows = newPath
+		RootCfg.Database.Mac = newPath
+		RootCfg.Database.Linux = newPath
+	}
 }

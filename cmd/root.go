@@ -17,7 +17,7 @@ var (
 		Short: "Term-tutor is a terminal-based application that challenges you as you learn.",
 		Long:  "Challenge yourself with flashcards, set reminders, and plan your lessons, all within the terminal. Read the full documentation at term-tutor.io",
 		Run: func(cmd *cobra.Command, args []string) {
-			dbPaths := config.Cfg.Database
+			dbPaths := config.RootCfg.Database
 			fmt.Printf("Database paths: Windows=%s, Mac=%s, Linux=%s\n", dbPaths.Windows, dbPaths.Mac, dbPaths.Linux)
 		},
 	}
@@ -36,5 +36,5 @@ func init() {
 }
 
 func initConfig() {
-	config.InitConfig(cfgFile)
+	config.InitRootConfig(cfgFile)
 }
