@@ -39,8 +39,7 @@ var setupCmd = &cobra.Command{
 func init() {
 	setupCmd.Flags().StringVar(&setupConfig.Email, "email", "", "Email address")
 	setupCmd.Flags().StringVar(&setupConfig.Interval, "interval", "", "Interval duration. Valid values are 'daily', 'weekly', 'monthly'")
-	setupCmd.Flags().StringVar(&setupConfig.Database, "database", "", "Database path.")
+	setupCmd.Flags().StringVar(&setupConfig.Database, "database", "", "Database path. Example: /path/to/database.db")
 
 	rootCmd.AddCommand(setupCmd)
-
 }
